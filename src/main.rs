@@ -69,7 +69,7 @@ impl ApendoNumberEchoChamber
       self.apendo_count = 0;
       for (iteration, value) in iter.enumerate()
       {
-         if iteration%self.step_length == 0
+         if self.step_length != 0 && iteration%self.step_length == 0
          {
             if self.apendo_mod != 0 && value%self.apendo_mod == 0
                {
@@ -94,7 +94,7 @@ impl ApendoNumberEchoChamber
       self.apendo_count = 0;
       for (iteration, value) in iter.enumerate()
       {
-         if iteration%self.step_length == 0
+         if self.step_length != 0 && iteration%self.step_length == 0
          {
             if self.apendo_mod != 0 && value%self.apendo_mod == 0
                {
@@ -163,7 +163,7 @@ fn main()
 {
    let mut chamber = ApendoNumberEchoChamber::new();
    //let mut chamber = ApendoNumberEchoChamber::new_with_parameters(1, 0, 0);
-   chamber.serial_echo((5,15));
+   //chamber.serial_echo((5,15));
    //chamber.set_apendo_mod(2);
    //chamber.set_step_length(3);
    //println!("{}", chamber.get_apendo_mod());
@@ -173,6 +173,6 @@ fn main()
    //chamber.serial_echo((-5, 3));
    //chamber.serial_echo((-5, -3));
    //chamber.serial_echo((-3, -5));
-   //chamber.specific_echo((16, 12),3);
+   chamber.specific_echo((16, 12),3);
    chamber.print_apendo_count();
 }
